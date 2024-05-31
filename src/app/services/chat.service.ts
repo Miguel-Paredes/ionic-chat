@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore'; // Import Ang
 import * as firebase from 'firebase/app';
 import { switchMap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { serverTimestamp } from "firebase/firestore"; 
 import 'firebase/compat/firestore';
 
 // Rest of your code...
@@ -77,7 +78,7 @@ export class ChatService {
       return this.afs.collection('messages').add({
         msg: msg,
         from: this.currentUser.uid,
-        createdAt: FieldValue
+        createdAt: serverTimestamp() // Use serverTimestamp() instead of a function
       });
     } else {
       throw new Error('No user is currently signed in');

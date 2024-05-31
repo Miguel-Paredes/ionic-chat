@@ -74,7 +74,6 @@ export class LoginPage implements OnInit {
       );
   }
 
-  // Easy access for form fields
   get email() {
     return this.credentialForm.get('email');
   }
